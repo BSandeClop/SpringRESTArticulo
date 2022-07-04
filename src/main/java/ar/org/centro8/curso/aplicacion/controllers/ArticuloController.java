@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,7 @@ public class ArticuloController {
         return articuloService.getLikeDescripcion(descripcion);
     }
 
-    @GetMapping("/servicios/articulos/v1/alta")
+    @PostMapping("/servicios/articulos/v1/alta")
     public ResponseEntity<Articulo> guardarPersonaje(
         @RequestParam String descripcion, 
         @RequestParam String rubro, 

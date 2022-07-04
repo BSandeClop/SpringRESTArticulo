@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Negocio</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <ul>
+        <li><a href="http://localhost:8080/">Inicio </a></li>
+        <li><a href="http://localhost:8080/clientes">Clientes </a></li>
+        <li><a href="http://localhost:8080/articulos">Articulos </a></li>
+        <li><a href="http://localhost:8080/facturas">Facturas </a></li>
+        <li>v0.99</li>
+    </ul>
+    <h1>Sistema de Negocio</h1>
+
+    <form th:object="${articulo}" th:action="@{/saveArticulo}" method="post">
+        <table>
+            <tr>
+                <td>Descripcion:</td>
+                <td><input type="text" th:field="*{descripcion}" required></td>
+            </tr>
+            <tr>
+                <td>Rubro: </td>
+                <td>
+                    <select name="rubro" th:value="*{rubro}">
+                    <option th:each="rubro: ${rubros}" th:value="${rubro}" th:text="${rubro}"/>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Costo: </td>
+                <td><input type="text" th:field="*{costo}" required></td>
+            </tr>
+            <tr>
+                <td>Precio: </td>
+                <td><input type="text" th:field="*{precio}" required></td>
+            </tr>
+            <tr>
+                <td>Stock: </td>
+                <td><input type="text" th:field="*{stock}" required></td>
+            </tr>
+            <tr>
+                <td>Stock Minimo: </td>
+                <td><input type="text" th:field="*{stock_minimo}" required></td>
+            </tr>
+            <tr>
+                <td>Stock Maximo: </td>
+                <td><input type="text" th:field="*{stock_maximo}" required></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="Limpiar" /></td>
+                <td><input type="submit" value="Guardar" /></td>
+            </tr>
+        </table>
+        <div id="info">
+            <label th:text="${mensaje}"></label>
+        </div>
+    </form>
+
+    <div>
+        <form th:object="${articulo}" method="get">
+            Buscar descripcion:
+            <input type="text" name="descripcion">
+            <input type="submit" value="Buscar">
+
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                    <th>Rubro</th>
+                    <th>Costo</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Stock Minimo</th>
+                    <th>Stock Maximo</th>
+                </tr>
+                <tr th:each="articulo: ${likeDescripcion}">
+                    <td th:text="${articulo.id}"></td>
+                    <td th:text="${articulo.descripcion}"></td>
+                    <td th:text="${articulo.rubro}"></td>
+                    <td th:text="${articulo.costo}"></td>
+                    <td th:text="${articulo.precio}"></td>
+                    <td th:text="${articulo.stock}"></td>
+                    <td th:text="${articulo.stock_minimo}"></td>
+                    <td th:text="${articulo.stock_maximo}"></td>
+                </tr>
+            </table>
+        </form>
+        
+    </div>
+
+</body>
+
+</html>
