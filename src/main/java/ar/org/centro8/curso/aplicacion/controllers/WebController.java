@@ -30,7 +30,7 @@ public class WebController {
     }
 
     @GetMapping("/articulos")
-    public String articulosPage(@RequestParam(required = false, defaultValue = "")String buscarDescripcion, Model model){
+    public String articulosPage(@RequestParam(name="buscarDescripcion", required = false, defaultValue = "")String buscarDescripcion, Model model){
         model.addAttribute("rubros", List.of(Rubro.values()));
         model.addAttribute("articulo", new Articulo());
         model.addAttribute("all", articuloService.getAll());

@@ -62,39 +62,37 @@
             <label th:text="${mensaje}"></label>
         </div>
     </form>
-
+    
     <div>
-        <form th:object="${articulo}" method="get">
+        <form method="get">
             Buscar descripcion:
-            <input type="text" name="descripcion">
+            <input type="text" name="buscarDescripcion">
             <input type="submit" value="Buscar">
-
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Descripcion</th>
-                    <th>Rubro</th>
-                    <th>Costo</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Stock Minimo</th>
-                    <th>Stock Maximo</th>
-                </tr>
-                <tr th:each="articulo: ${likeDescripcion}">
-                    <td th:text="${articulo.id}"></td>
-                    <td th:text="${articulo.descripcion}"></td>
-                    <td th:text="${articulo.rubro}"></td>
-                    <td th:text="${articulo.costo}"></td>
-                    <td th:text="${articulo.precio}"></td>
-                    <td th:text="${articulo.stock}"></td>
-                    <td th:text="${articulo.stock_minimo}"></td>
-                    <td th:text="${articulo.stock_maximo}"></td>
-                </tr>
-            </table>
         </form>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Rubro</th>
+                <th>Costo</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Stock Minimo</th>
+                <th>Stock Maximo</th>
+            </tr>
+            <tr th:each="articulo: ${likeDescripcion}">
+                <td th:text="${articulo.id}"></td>
+                <td th:text="${articulo.descripcion}"></td>
+                <td th:text="${articulo.rubro}"></td>
+                <td th:text="${articulo.costo}"></td>
+                <td th:text="${articulo.precio}"></td>
+                <td th:text="${articulo.stock}"></td>
+                <td th:text="${articulo.stock_minimo}"></td>
+                <td th:text="${articulo.stock_maximo}"></td>
+            </tr>
+        </table>
         
     </div>
-
 </body>
 
 </html>
